@@ -3,6 +3,7 @@ import gql from 'graphql-tag';
 export type Maybe<T> = T | null;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
+  /** The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `"4"`) or integer (such as `4`) input value will be accepted as an ID. */
   ID: string;
   /** The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text. */
   String: string;
@@ -10,6 +11,25 @@ export type Scalars = {
   /** The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1. */
   Int: number;
   Float: number;
+};
+
+export type Mutation = {
+  __typename?: 'Mutation';
+  /** POST /wp/v2/users/{args.id} */
+  updateUser?: Maybe<User>;
+  /** POST /wp/v2/users */
+  createUser?: Maybe<User>;
+};
+
+
+export type MutationUpdateUserArgs = {
+  id: Scalars['ID'];
+  input?: Maybe<UserInput>;
+};
+
+
+export type MutationCreateUserArgs = {
+  input?: Maybe<UserInput>;
 };
 
 export type Query = {
@@ -51,6 +71,37 @@ export type User = {
   /** Password for the user (never included). */
   password?: Maybe<Scalars['String']>;
 };
+
+export type UserInput = {
+  /** Login name for the user. */
+  username?: Maybe<Scalars['String']>;
+  /** Display name for the user. */
+  name?: Maybe<Scalars['String']>;
+  /** First name for the user. */
+  first_name?: Maybe<Scalars['String']>;
+  /** Last name for the user. */
+  last_name?: Maybe<Scalars['String']>;
+  /** The email address for the user. */
+  email?: Maybe<Scalars['String']>;
+  /** URL of the user. */
+  url?: Maybe<Scalars['String']>;
+  /** Description of the user. */
+  description?: Maybe<Scalars['String']>;
+  /** Locale for the user. */
+  locale?: Maybe<UserInputLocale>;
+  /** The nickname for the user. */
+  nickname?: Maybe<Scalars['String']>;
+  /** An alphanumeric identifier for the user. */
+  slug?: Maybe<Scalars['String']>;
+  /** Roles assigned to the user. */
+  roles?: Maybe<Array<Maybe<Scalars['String']>>>;
+  /** Password for the user (never included). */
+  password?: Maybe<Scalars['String']>;
+};
+
+export enum UserInputLocale {
+  EnUs = 'en_US'
+}
 
 export enum UserLocale {
   EnUs = 'en_US'

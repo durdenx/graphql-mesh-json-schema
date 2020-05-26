@@ -5,15 +5,15 @@
     "generate:sdk": "yarn graphql-mesh generate-sdk --operations ./*.graphql --output ./sdk.ts"
   },
   "dependencies": {
-    "@graphql-mesh/runtime": "0.1.18-alpha-7279acf5.0",
+    "@graphql-mesh/runtime": "0.1.18-alpha-2ac9d01a.0",
     "graphql": "^14.6.0"
   },
   "devDependencies": {
-    "@graphql-mesh/cli": "0.1.18-alpha-7279acf5.0",
-    "@graphql-mesh/graphql": "0.1.18-alpha-7279acf5.0",
-    "@graphql-mesh/json-schema": "0.1.18-alpha-7279acf5.0",
-    "@graphql-mesh/transform-extend": "0.1.18-alpha-7279acf5.0",
-    "@graphql-mesh/transform-mock": "0.1.18-alpha-7279acf5.0"
+    "@graphql-mesh/cli": "0.1.18-alpha-2ac9d01a.0",
+    "@graphql-mesh/graphql": "0.1.18-alpha-2ac9d01a.0",
+    "@graphql-mesh/json-schema": "0.1.18-alpha-2ac9d01a.0",
+    "@graphql-mesh/transform-extend": "0.1.18-alpha-2ac9d01a.0",
+    "@graphql-mesh/transform-mock": "0.1.18-alpha-2ac9d01a.0"
   },
   "license": "ISC"
 }
