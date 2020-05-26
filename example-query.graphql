@@ -1,7 +1,19 @@
-{
-  users {
-    firstName
-    lastName
-    jobTitle
+query me {
+  me {
+    id
+    username
+    name
+    first_name
+    last_name
+    email
+    url
+    description
+    link
+    locale
+    nickname
+    slug
+    registered_date
+    roles
+    password
   }
 }

@@ -4,6 +4,11 @@ sources:
       jsonSchema:
         baseUrl: https://not-existing-api.com/API
         operations:
+          - type: Query
+            field: me
+            path: /wp/v2/user/me
+            method: GET
+            responseSchema: ./json-schemas/user.json
           - type: Mutation
             field: createUser
             path: /wp/v2/users
