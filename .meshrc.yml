@@ -4,13 +4,15 @@ sources:
       jsonSchema:
         baseUrl: https://not-existing-api.com/API
         operations:
-          - type: Query
-            field: users
-            path: /users
-            method: GET
-            responseSchema: ./json-schemas/users.json
           - type: Mutation
-            field: updateUsers
-            path: /users/{args.id}
-            method: PUT
-            responseSchema: ./json-schemas/users.json
+            field: createUser
+            path: /wp/v2/users
+            method: POST
+            requestSchema: ./json-schemas/userInput.json
+            responseSchema: ./json-schemas/user.json
+          - type: Mutation
+            field: updateUser
+            path: /wp/v2/users/{args.id}
+            method: POST
+            requestSchema: ./json-schemas/userInput.json
+            responseSchema: ./json-schemas/user.json
