@@ -1,19 +1,24 @@
 {
-  "name": "with-webpack-bundle-analyzer",
+  "name": "sdk-fail-graphql-mesh-with-transform-naming-convention",
   "version": "1.0.0",
   "scripts": {
-    "generate:sdk": "yarn graphql-mesh generate-sdk --operations ./*.graphql --output ./sdk.ts"
+    "server:start": "yarn json-server --watch server/db.json",
+    "client:start": "babel-node index.ts --extensions \".ts,.tsx\"",
+    "generate:sdk": "yarn graphql-mesh generate-sdk --output ./sdk.ts"
   },
   "dependencies": {
-    "@graphql-mesh/runtime": "0.1.18-alpha-2ac9d01a.0",
-    "graphql": "^14.6.0"
+    "@graphql-mesh/runtime": "^0.2.9",
+    "@graphql-mesh/transform-mock": "^0.2.10",
+    "@graphql-mesh/transform-naming-convention": "^0.2.9",
+    "graphql": "^14.6.0",
+    "json-server": "^0.16.1",
+    "next": "^9.4.4"
   },
   "devDependencies": {
-    "@graphql-mesh/cli": "0.1.18-alpha-2ac9d01a.0",
-    "@graphql-mesh/graphql": "0.1.18-alpha-2ac9d01a.0",
-    "@graphql-mesh/json-schema": "0.1.18-alpha-2ac9d01a.0",
-    "@graphql-mesh/transform-extend": "0.1.18-alpha-2ac9d01a.0",
-    "@graphql-mesh/transform-mock": "0.1.18-alpha-2ac9d01a.0"
+    "@babel/node": "^7.10.1",
+    "@graphql-mesh/cli": "^0.2.9",
+    "@graphql-mesh/graphql": "^0.2.9",
+    "@graphql-mesh/json-schema": "^0.2.9"
   },
   "license": "ISC"
 }

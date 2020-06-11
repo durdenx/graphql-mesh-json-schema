@@ -1,0 +1,22 @@
+{
+  "me": {
+    "id": 1,
+    "username": "bgibson",
+    "name": "Brad Gibson",
+    "first_name": "Brad",
+    "last_name": "Gibson",
+    "email": "brad.gibson@example.org",
+    "registered_date": "2002-05-21T10:59:49.966Z"
+  },
+  "users": [
+    {
+      "id": 1,
+      "username": "bgibson",
+      "name": "Brad Gibson",
+      "first_name": "Brad",
+      "last_name": "Gibson",
+      "email": "brad.gibson@example.org",
+      "registered_date": "2002-05-21T10:59:49.966Z"
+    }
+  ]
+}

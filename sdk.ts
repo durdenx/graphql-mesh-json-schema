@@ -1,9 +1,9 @@
 import { DocumentNode } from 'graphql';
 import gql from 'graphql-tag';
 export type Maybe<T> = T | null;
+export type Exact<T extends { [key: string]: any }> = { [K in keyof T]: T[K] };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  /** The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `"4"`) or integer (such as `4`) input value will be accepted as an ID. */
   ID: string;
   /** The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text. */
   String: string;
@@ -15,16 +15,8 @@ export type Scalars = {
 
 export type Mutation = {
   __typename?: 'Mutation';
-  /** POST /wp/v2/users/{args.id} */
-  updateUser?: Maybe<User>;
-  /** POST /wp/v2/users */
+  /** POST /users */
   createUser?: Maybe<User>;
-};
-
-
-export type MutationUpdateUserArgs = {
-  id: Scalars['ID'];
-  input?: Maybe<UserInput>;
 };
 
 
@@ -34,7 +26,7 @@ export type MutationCreateUserArgs = {
 
 export type Query = {
   __typename?: 'Query';
-  /** GET /wp/v2/user/me */
+  /** GET /me */
   me?: Maybe<User>;
 };
 
@@ -47,104 +39,85 @@ export type User = {
   /** Display name for the user. */
   name?: Maybe<Scalars['String']>;
   /** First name for the user. */
-  first_name?: Maybe<Scalars['String']>;
+  firstName?: Maybe<Scalars['String']>;
   /** Last name for the user. */
-  last_name?: Maybe<Scalars['String']>;
+  lastName?: Maybe<Scalars['String']>;
   /** The email address for the user. */
   email?: Maybe<Scalars['String']>;
-  /** URL of the user. */
-  url?: Maybe<Scalars['String']>;
-  /** Description of the user. */
-  description?: Maybe<Scalars['String']>;
-  /** Author URL of the user. */
-  link?: Maybe<Scalars['String']>;
-  /** Locale for the user. */
-  locale?: Maybe<UserLocale>;
-  /** The nickname for the user. */
-  nickname?: Maybe<Scalars['String']>;
-  /** An alphanumeric identifier for the user. */
-  slug?: Maybe<Scalars['String']>;
   /** Registration date for the user. */
-  registered_date?: Maybe<Scalars['String']>;
-  /** Roles assigned to the user. */
-  roles?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** Password for the user (never included). */
-  password?: Maybe<Scalars['String']>;
+  registeredDate?: Maybe<Scalars['String']>;
 };
 
 export type UserInput = {
   /** Login name for the user. */
   username?: Maybe<Scalars['String']>;
-  /** Display name for the user. */
-  name?: Maybe<Scalars['String']>;
   /** First name for the user. */
-  first_name?: Maybe<Scalars['String']>;
+  firstName?: Maybe<Scalars['String']>;
   /** Last name for the user. */
-  last_name?: Maybe<Scalars['String']>;
+  lastName?: Maybe<Scalars['String']>;
   /** The email address for the user. */
   email?: Maybe<Scalars['String']>;
-  /** URL of the user. */
-  url?: Maybe<Scalars['String']>;
-  /** Description of the user. */
-  description?: Maybe<Scalars['String']>;
-  /** Locale for the user. */
-  locale?: Maybe<UserInputLocale>;
-  /** The nickname for the user. */
-  nickname?: Maybe<Scalars['String']>;
-  /** An alphanumeric identifier for the user. */
-  slug?: Maybe<Scalars['String']>;
-  /** Roles assigned to the user. */
-  roles?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** Password for the user (never included). */
-  password?: Maybe<Scalars['String']>;
 };
 
-export enum UserInputLocale {
-  EnUs = 'en_US'
-}
-
-export enum UserLocale {
-  EnUs = 'en_US'
-}
-
-export type MeQueryVariables = {};
+export type MeQueryQueryVariables = {};
 
 
-export type MeQuery = (
+export type MeQueryQuery = (
   { __typename?: 'Query' }
   & { me?: Maybe<(
     { __typename?: 'User' }
-    & Pick<User, 'id' | 'username' | 'name' | 'first_name' | 'last_name' | 'email' | 'url' | 'description' | 'link' | 'locale' | 'nickname' | 'slug' | 'registered_date' | 'roles' | 'password'>
+    & Pick<User, 'id' | 'username' | 'name' | 'firstName' | 'lastName' | 'email' | 'registeredDate'>
+  )> }
+);
+
+export type CreateUserMutationMutationVariables = Exact<{
+  input?: Maybe<UserInput>;
+}>;
+
+
+export type CreateUserMutationMutation = (
+  { __typename?: 'Mutation' }
+  & { createUser?: Maybe<(
+    { __typename?: 'User' }
+    & Pick<User, 'id' | 'username' | 'name' | 'firstName' | 'lastName' | 'email' | 'registeredDate'>
   )> }
 );
 
 
-export const MeDocument = gql`
-    query me {
+export const MeQueryDocument = gql`
+    query meQuery {
   me {
     id
     username
     name
-    first_name
-    last_name
+    firstName
+    lastName
     email
-    url
-    description
-    link
-    locale
-    nickname
-    slug
-    registered_date
-    roles
-    password
+    registeredDate
+  }
+}
+    `;
+export const CreateUserMutationDocument = gql`
+    mutation createUserMutation($input: UserInput) {
+  createUser(input: $input) {
+    id
+    username
+    name
+    firstName
+    lastName
+    email
+    registeredDate
   }
 }
     `;
 export type Requester<C= {}> = <R, V>(doc: DocumentNode, vars?: V, options?: C) => Promise<R>
 export function getSdk<C>(requester: Requester<C>) {
   return {
-    me(variables?: MeQueryVariables, options?: C): Promise<MeQuery> {
-      return requester<MeQuery, MeQueryVariables>(MeDocument, variables, options);
+    meQuery(variables?: MeQueryQueryVariables, options?: C): Promise<MeQueryQuery> {
+      return requester<MeQueryQuery, MeQueryQueryVariables>(MeQueryDocument, variables, options);
+    },
+    createUserMutation(variables?: CreateUserMutationMutationVariables, options?: C): Promise<CreateUserMutationMutation> {
+      return requester<CreateUserMutationMutation, CreateUserMutationMutationVariables>(CreateUserMutationDocument, variables, options);
     }
   };
 }

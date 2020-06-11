@@ -37,60 +37,12 @@
       "context": ["edit"],
       "required": true
     },
-    "url": {
-      "description": "URL of the user.",
-      "type": "string",
-      "format": "uri",
-      "context": ["embed", "view", "edit"]
-    },
-    "description": {
-      "description": "Description of the user.",
-      "type": "string",
-      "context": ["embed", "view", "edit"]
-    },
-    "link": {
-      "description": "Author URL of the user.",
-      "type": "string",
-      "format": "uri",
-      "context": ["embed", "view", "edit"],
-      "readonly": true
-    },
-    "locale": {
-      "description": "Locale for the user.",
-      "type": "string",
-      "enum": ["en_US"],
-      "context": ["edit"]
-    },
-    "nickname": {
-      "description": "The nickname for the user.",
-      "type": "string",
-      "context": ["edit"]
-    },
-    "slug": {
-      "description": "An alphanumeric identifier for the user.",
-      "type": "string",
-      "context": ["embed", "view", "edit"]
-    },
     "registered_date": {
       "description": "Registration date for the user.",
       "type": "string",
       "format": "date-time",
       "context": ["edit"],
       "readonly": true
-    },
-    "roles": {
-      "description": "Roles assigned to the user.",
-      "type": "array",
-      "items": {
-        "type": "string"
-      },
-      "context": ["edit"]
-    },
-    "password": {
-      "description": "Password for the user (never included).",
-      "type": "string",
-      "context": [],
-      "required": true
     }
   }
 }
