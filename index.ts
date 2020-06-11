@@ -21,8 +21,8 @@ async function main() {
     input: {
       email: "john.doe@gmail.com",
       username: "jdoe",
-      // firstName: "John",
-      // lastName: "Doe",
+      firstName: "John",
+      lastName: "Doe",
     },
   });
   console.log(
