@@ -7,18 +7,18 @@
     "generate:sdk": "yarn graphql-mesh generate-sdk --output ./sdk.ts"
   },
   "dependencies": {
-    "@graphql-mesh/runtime": "^0.2.9",
-    "@graphql-mesh/transform-mock": "^0.2.10",
-    "@graphql-mesh/transform-naming-convention": "^0.2.9",
+    "@graphql-mesh/runtime": "^0.2.11",
+    "@graphql-mesh/transform-mock": "^0.2.11",
+    "@graphql-mesh/transform-naming-convention": "^0.2.11",
     "graphql": "^14.6.0",
     "json-server": "^0.16.1",
     "next": "^9.4.4"
   },
   "devDependencies": {
     "@babel/node": "^7.10.1",
-    "@graphql-mesh/cli": "^0.2.9",
-    "@graphql-mesh/graphql": "^0.2.9",
-    "@graphql-mesh/json-schema": "^0.2.9"
+    "@graphql-mesh/cli": "^0.2.11",
+    "@graphql-mesh/graphql": "^0.2.11",
+    "@graphql-mesh/json-schema": "^0.2.11"
   },
   "license": "ISC"
 }
